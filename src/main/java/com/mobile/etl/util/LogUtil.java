@@ -1,5 +1,6 @@
 package com.mobile.etl.util;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,7 +14,7 @@ public class LogUtil {
 
 
     /**
-     *
+     * 上传日志进行分析
      * @param log  一行日志
      * @return 将解析后的k-v存储到map中，以便etl的mapper进行使用
      */
@@ -25,6 +26,13 @@ public class LogUtil {
         String userAgent=splited[2];
         String url=splited[3];
         try {
+
+            Map<String ,String> map = new HashMap<String, String>();
+
+            IpUtil.parserIp(ip).toString();
+            DateUtil.getTime(time);
+            UserAgentUtil.parserUserAgent(userAgent);
+            UrlPathUtil.getUrlPath(url);
 
         }catch (Exception e){
             e.printStackTrace();

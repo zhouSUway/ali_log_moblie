@@ -20,7 +20,7 @@ public class IpUtil {
      * @return
      */
 
-    public static RegionInfo parserIp(String ip){
+    public static RegionInfo parserIp(String ip)throws Exception{
         if(StringUtils.isEmpty(ip)){
             return info;
         }
@@ -35,46 +35,9 @@ public class IpUtil {
                 info.setCountry("中国");
                 info.setProvince("北京市");
                 info.setCity("昌平区");
-            }else if(country.contains("省")||country.contains("市")){
+            }else if(country !=null && !country.trim().equals("")){
                 //返回的字段中是否包括市
                 //返回字段中是否包括省这个字，否则判断是前两个字符是否为北京、天津、上海、重庆和广西、内蒙、西藏、新疆、宁夏和香港、澳门、台湾
-                String province = country.substring(0,1);
-                System.out.println(province);
-                if(StringUtils.isNotEmpty(province)){
-
-                    if(province.contains("北京")){
-                        info.setCity("北京市");
-                    }else if(province.contains("上海")){
-                        info.setCity("上海市");
-                    }else if(province.contains("重庆")){
-                        info.setCity("重庆市");
-                    }else if(province.contains("天津")){
-                        info.setCity("天津");
-                    }else if(province.contains("广东")){
-                        info.setProvince("广东省");
-                    }
-                    else if(province.contains("广西")){
-                        info.setProvince("广西壮族自治区");
-                    }else if(province.contains("宁夏")){
-                        info.setProvince("宁夏回族自治区");
-                    }else if(province.contains("新疆")){
-                        info.setProvince("新疆维族自治区");
-                    }else if(province.contains("内蒙")){
-                        info.setProvince("内蒙古蒙古自治区");
-                    }else if(province.contains("西藏")){
-                        info.setProvince("西藏藏族自治区");
-                    }else if(province.contains("香港")){
-                        info.setCity("香港特别行政区");
-                    }else if(province.contains("澳门")){
-                        info.setProvince("澳门特别行政区");
-                    }else if(province.contains("台湾")){
-                        info.setProvince("台湾省");
-                    }else {
-                        System.out.println("有误");
-                    }
-
-                    return info;
-                }
 
             }
         }
