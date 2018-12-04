@@ -1,4 +1,4 @@
-package com.mobile.etl.util.ip;
+package qianfeng.etl.util.ip;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
