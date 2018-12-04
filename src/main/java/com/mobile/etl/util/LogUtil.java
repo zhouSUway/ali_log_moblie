@@ -25,7 +25,6 @@ public class LogUtil {
         String userAgent=splited[2];
         String url=splited[3];
         try {
-           IpUtil ipUtil = new IpUtil();
 
         }catch (Exception e){
             e.printStackTrace();
