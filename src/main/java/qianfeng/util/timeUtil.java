@@ -1,4 +1,4 @@
 package qianfeng.util;
 
-public class TimeUtil {
+public class timeUtil {
 }
