@@ -4,7 +4,7 @@ import com.qianfeng.common.GlobalConstants;
 
 import java.sql.*;
 
-public class jdbcUtil {
+public class JdbcUtil {
 
     //静态加载驱动
 
