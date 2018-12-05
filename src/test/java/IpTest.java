@@ -1,30 +1,30 @@
-
-
-import qianfeng.etl.util.ip.IPSeeker;
-import qianfeng.etl.util.ip.IpUtil;
+import com.qianfeng.etl.util.IpParserUtil;
+import com.qianfeng.etl.util.ip.IPSeeker;
 
 import java.util.List;
 
 /**
- * @ClassName IpTest
- * @Author lyd
- * @Date $ $
- * @Vesion 1.0
- * @Description 解析ip的测试类
- **/
+ * @Auther: lyd
+ * @Date: 2018/7/25 15:28
+ * @Description:
+ */
 public class IpTest {
-
-    public static void main(String[] args) throws Exception{
-       System.out.println(IPSeeker.getInstance().getCountry("183.62.92.113"));//广东省深圳市
-       System.out.println(IPSeeker.getInstance().getCountry("192.168.216.111"));//局域网
-        //IpUtil.RegionInfo ip = IpUtil.parserIp("192.168.216.111");
-      // System.out.println(ip);
-
-      List<String> ips =  IPSeeker.getInstance().getAllIp();
-        for(String ip :ips){
-
-
-
+    public static void main(String[] args) {
+      /* String country = IPSeeker.getInstance().getCountry("59.67.194.5");
+       int index = country.indexOf("省");
+       System.out.println(country.substring(0,index+1));
+       System.out.println(IPSeeker.getInstance().getCountry("192.168.216.111"));
+        */
+       List<String> ips = IPSeeker.getInstance().getAllIp();
+        for (String ip:ips) {
+//            System.out.println(ip+"=="+ new IpParserUtil().parserIp(ip));
+            try {
+                System.out.println(ip+"===="+new IpParserUtil().parserIp1("http://ip.taobao.com/service/getIpInfo.php?ip="+ip,"utf-8"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 }
