@@ -15,4 +15,6 @@ public abstract class OutputValueBaseWritable implements Writable{
      * @return
      */
     public abstract KpiType getKpi(); //获取一个kpi的抽象方法
+
+    public abstract int compareTo(Object o);
 }

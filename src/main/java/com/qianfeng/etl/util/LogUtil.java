@@ -26,7 +26,7 @@ public class LogUtil {
      * @param log
      * @return
      */
-    public static Map parserLog(String log){
+    public Map parserLog(String log){
         //定义一个map
         Map<String,String> info = new ConcurrentHashMap<String,String>();
         if(StringUtils.isNotEmpty(log)){
@@ -57,7 +57,7 @@ public class LogUtil {
      * 解析userAgent
      * @param info
      */
-    private static void handleUserAgent(Map<String, String> info) {
+    private void handleUserAgent(Map<String, String> info) {
         if(info.containsKey(EventLogsConstant.EVENT_COLUMN_NAME_USERAGENT)){
             UserAgentUtil.UserAgentInfo userAgent = new UserAgentUtil().parserUserAgent(info.get(EventLogsConstant.EVENT_COLUMN_NAME_USERAGENT));
             if(userAgent != null){
@@ -73,7 +73,7 @@ public class LogUtil {
      * 解析ip
      * @param info
      */
-    private static void handleIp(Map<String, String> info) {
+    private void handleIp(Map<String, String> info) {
         if(info.containsKey(EventLogsConstant.EVENT_COLUMN_NAME_IP)){
             IpParserUtil.RegionInfo region = new IpParserUtil().parserIp(info.get(EventLogsConstant.EVENT_COLUMN_NAME_IP));
             if(region != null){
@@ -89,7 +89,7 @@ public class LogUtil {
      * @param info
      * @param params
      */
-    private static void handleParams(Map<String, String> info, String params) {
+    private void handleParams(Map<String, String> info, String params) {
         if(StringUtils.isNotEmpty(params)){
             String [] paramkvs = params.split("&");
             try {

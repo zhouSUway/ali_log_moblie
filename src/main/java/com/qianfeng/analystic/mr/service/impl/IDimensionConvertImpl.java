@@ -3,10 +3,13 @@ package com.qianfeng.analystic.mr.service.impl;
 import com.qianfeng.analystic.model.dim.base.*;
 import com.qianfeng.analystic.mr.service.IDimensionConvert;
 import com.qianfeng.util.JdbcUtil;
+import jdk.nashorn.internal.scripts.JD;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -55,6 +58,14 @@ public class IDimensionConvertImpl implements IDimensionConvert{
             sqls = this.buildBrowserSqls();
         } else if(dimension instanceof KpiDimension){
             sqls = this.buildKpiSqls();
+        } else if(dimension instanceof LocationDimension){
+            sqls = this.buildLocalSqls();
+        } else if(dimension instanceof EventDimension){
+            sqls = this.buildEventSqls();
+        } else if(dimension instanceof CurrencyTypeDimension){
+            sqls = this.buildCurrencySqls(dimension);
+        } else if(dimension instanceof PaymentTypeDimension){
+            sqls = this.buildPaymentSqls(dimension);
         }
 
         Connection conn = JdbcUtil.getConn();
@@ -143,13 +154,33 @@ public class IDimensionConvertImpl implements IDimensionConvert{
             sb.append("kpi_");
             KpiDimension kpi = (KpiDimension) dimension;
             sb.append(kpi.getKpiName());
+
+        } else if(dimension instanceof LocationDimension){
+            sb.append("local_");
+            LocationDimension local = (LocationDimension) dimension;
+            sb.append(local.getCountry());
+            sb.append(local.getProvince());
+            sb.append(local.getCity());
+        } else if(dimension instanceof EventDimension){
+            sb.append("event_");
+            EventDimension event = (EventDimension) dimension;
+            sb.append(event.getCategory());
+            sb.append(event.getAction());
+        } else if(dimension instanceof PaymentTypeDimension){
+            sb.append("payment_");
+            PaymentTypeDimension payment = (PaymentTypeDimension) dimension;
+            sb.append(payment.getPaymentType());
+        } else if(dimension instanceof CurrencyTypeDimension){
+            sb.append("currency_");
+            CurrencyTypeDimension currency = (CurrencyTypeDimension) dimension;
+            sb.append(currency.getCurrencyName());
         }
         return sb.length() == 0 ? null : sb.toString();
     }
 
 
     /**
-     * 执行-真正的执行sql语句
+     * 执行
      * @param sqls
      * @param dimension
      * @param conn
@@ -160,7 +191,7 @@ public class IDimensionConvertImpl implements IDimensionConvert{
         ResultSet rs = null;
 
         try{
-            //先执行查询，在插入
+            //先查询
             ps = conn.prepareStatement(sqls[0]);
             this.setArgs(dimension,ps);
             rs = ps.executeQuery();
@@ -179,12 +210,7 @@ public class IDimensionConvertImpl implements IDimensionConvert{
         } catch (SQLException e){
             logger.warn("执行维度sql异常.",e);
         } finally {
-            try {
-                JdbcUtil.close(conn,ps,rs);
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtil.close(conn,ps,rs);
         }
         throw new RuntimeException("查询和插入sql都异常.");
     }
@@ -216,6 +242,21 @@ public class IDimensionConvertImpl implements IDimensionConvert{
             } else if(dimension instanceof KpiDimension){
                 KpiDimension kpi = (KpiDimension) dimension;
                 ps.setString(++i,kpi.getKpiName());
+            } else if(dimension instanceof LocationDimension){
+                LocationDimension local = (LocationDimension) dimension;
+                ps.setString(++i,local.getCountry());
+                ps.setString(++i,local.getProvince());
+                ps.setString(++i,local.getCity());
+            } else if(dimension instanceof EventDimension){
+                EventDimension event = (EventDimension) dimension;
+                ps.setString(++i,event.getCategory());
+                ps.setString(++i,event.getAction());
+            } else if(dimension instanceof PaymentTypeDimension){
+                PaymentTypeDimension payment = (PaymentTypeDimension) dimension;
+                ps.setString(++i,payment.getPaymentType());
+            } else if(dimension instanceof CurrencyTypeDimension){
+                CurrencyTypeDimension currency = (CurrencyTypeDimension) dimension;
+                ps.setString(++i,currency.getCurrencyName());
             }
         } catch (SQLException e) {
             logger.warn("设置参数异常.",e);

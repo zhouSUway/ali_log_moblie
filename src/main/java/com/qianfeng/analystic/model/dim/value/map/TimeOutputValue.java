@@ -33,6 +33,11 @@ public class TimeOutputValue extends OutputValueBaseWritable{
         return null;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
 
     public String getId() {
         return id;

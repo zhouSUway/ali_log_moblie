@@ -1,76 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-<!--将kpi指标和对应的sql赋值的类进行存储-->
+
 <configuration>
-
     <property>
-        <name>writter_new_install_user</name>
-        <value>com.qianfeng.anlystic.mr.nu.NewUserWritter</value>
+        <name>output_new_user</name>
+        <value>com.qianfeng.analystic.mr.nu.NewUserOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_browser_new_install_user</name>
-        <value>com.qianfeng.anlystic.mr.nu.BrowserNewUserWritter</value>
+        <name>output_browser_new_user</name>
+        <value>com.qianfeng.analystic.mr.nu.NewUserOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_active_user</name>
-        <value>com.qianfeng.anlystic.mr.au.ActiveUserWritter</value>
+    <name>output_active_user</name>
+    <value>com.qianfeng.analystic.mr.au.ActiveUserOuputWrtter</value>
+</property>
+
+    <property>
+        <name>output_browser_active_user</name>
+        <value>com.qianfeng.analystic.mr.au.ActiveUserOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_browser_active_user</name>
-        <value>com.qianfeng.anlystic.mr.au.BrowserActiveUserWritter</value>
+        <name>output_active_member</name>
+        <value>com.qianfeng.analystic.mr.am.ActiveMemberOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_active_member</name>
-        <value>com.qianfeng.anlystic.mr.am.ActiveMemberWritter</value>
+        <name>output_browser_active_member</name>
+        <value>com.qianfeng.analystic.mr.am.ActiveMemberOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_browser_active_member</name>
-        <value>com.qianfeng.anlystic.mr.am.BrowserActiveMemberWritter</value>
+        <name>output_new_member</name>
+        <value>com.qianfeng.analystic.mr.nm.NewMemberOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_new_member</name>
-        <value>com.qianfeng.anlystic.mr.nm.NewMemberWritter</value>
+        <name>output_browser_new_member</name>
+        <value>com.qianfeng.analystic.mr.nm.NewMemberOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_browser_new_member</name>
-        <value>com.qianfeng.anlystic.mr.nm.NewMemberWritter</value>
+        <name>output_member_info</name>
+        <value>com.qianfeng.analystic.mr.nm.NewMemberOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_member_info</name>
-        <value>com.qianfeng.anlystic.mr.nm.NewMemberWritter</value>
-    </property>
-
-
-    <property>
-        <name>writter_session</name>
-        <value>com.qianfeng.anlystic.mr.session.SessionWritter</value>
+        <name>output_session</name>
+        <value>com.qianfeng.analystic.mr.session.SessionOutputWritter</value>
     </property>
 
     <property>
-        <name>writter_browser_session</name>
-        <value>com.qianfeng.anlystic.mr.session.SessionWritter</value>
+        <name>output_browser_session</name>
+        <value>com.qianfeng.analystic.mr.session.SessionOutputWritter</value>
     </property>
 
     <property>
-        <name>writter_hourly_active_user</name>
-        <value>com.qianfeng.anlystic.mr.au.HourlyActiveUserWritter</value>
+        <name>output_hourly_active_user</name>
+        <value>com.qianfeng.analystic.mr.au.ActiveUserOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_pageview</name>
-        <value>com.qianfeng.anlystic.mr.pv.PageViewWritter</value>
+        <name>output_pageview</name>
+        <value>com.qianfeng.analystic.mr.pv.PageviewOuputWrtter</value>
     </property>
 
     <property>
-        <name>writter_location</name>
-        <value>com.qianfeng.anlystic.mr.local.LocationWritter</value>
+        <name>output_local</name>
+        <value>com.qianfeng.analystic.mr.local.LocalOuputWrtter</value>
     </property>
+
 </configuration>

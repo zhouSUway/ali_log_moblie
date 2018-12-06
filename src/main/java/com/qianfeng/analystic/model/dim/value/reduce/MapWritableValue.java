@@ -35,6 +35,11 @@ public class MapWritableValue extends OutputValueBaseWritable{
         return this.kpi;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
     public MapWritable getValue() {
         return value;
     }

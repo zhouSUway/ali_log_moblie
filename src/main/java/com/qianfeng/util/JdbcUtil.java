@@ -4,42 +4,68 @@ import com.qianfeng.common.GlobalConstants;
 
 import java.sql.*;
 
+/**
+ * @Auther: lyd
+ * @Date: 2018/7/27 17:09
+ * @Description:获取mysql的连接和关闭
+ */
 public class JdbcUtil {
-
-    //静态加载驱动
 
     static {
         try {
             Class.forName(GlobalConstants.DRIVER);
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+    /**
+     * 获取mysql的连接
+     * @return
+     */
     public static Connection getConn(){
-        Connection conn= null;
+        Connection conn = null;
         try {
-            conn=DriverManager.getConnection(GlobalConstants.URL,GlobalConstants.USERNAME,GlobalConstants.PASSWORD);
+            conn =  DriverManager.getConnection(GlobalConstants.URL,
+                    GlobalConstants.USERNAME,GlobalConstants.PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return conn;
-
     }
 
+    /**
+     * 关闭相关对象
+     * @param conn
+     * @param ps
+     * @param rs
+     */
+    public static void close(Connection conn, PreparedStatement ps, ResultSet rs){
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                //do nothing
+            }
+        }
 
-    public static void close(Connection conn, PreparedStatement psm, ResultSet rs) throws SQLException {
-        if (conn!=null){
-            conn.close();
-        }
-        if (psm!=null){
-            psm.close();
-        }
-        if (rs!=null)
-        {
-            rs.close();
+        if(ps != null){
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                //do nothing
+            }
         }
 
+        if(rs != null){
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                //do nothing
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getConn());
     }
 }

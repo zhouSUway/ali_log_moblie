@@ -1,22 +1,27 @@
 package com.qianfeng.common;
 
-public class   EventLogsConstant {
+/**
+ * @Auther: lyd
+ * @Date: 2018/7/26 09:25
+ * @Description:定义采集的数据中的相对应的key
+ */
+public class EventLogsConstant {
 
     /**
      * 定义事件枚举
      */
-
     public static enum EventEnum{
-        LAUNCH(1,"lanuch","e_l"),
+        LAUNCH(1,"lanuch event","e_l"),
         PAGEVIEW(2,"page view event","e_pv"),
         CHARGEREQUEST(3,"charge request event","e_crt"),
         CHARGESUCCESS(4,"charge success","e_cs"),
         CHARGEREFUND(5,"charge refund","e_cr"),
         EVENT(6,"event","e_e")
         ;
-        public final int id;
-        public final String name;
-        public final String alias;//别名
+
+        public  final int id;
+        public final  String name;
+        public final String alias; //别名
 
         EventEnum(int id, String name, String alias) {
             this.id = id;
@@ -26,27 +31,24 @@ public class   EventLogsConstant {
 
         /**
          * 根据别名获取事件枚举
+         * @param alias
+         * @return
          */
-
         public static EventEnum valueOfAlias(String alias){
-
             //for循环
-
-            for(EventEnum event:values()){
-                if (alias.equals(event.alias)){
+            for (EventEnum event:values()){
+                if(alias.equals(event.alias)){
                     return event;
                 }
-
             }
             return null;
         }
     }
 
+
     /**
-     *
      * 和日志相关
      */
-
     public static final String HBASE_TABLE_NAME = "logs";
 
     public static final String HBASE_COLUMN_FAMILY = "info";

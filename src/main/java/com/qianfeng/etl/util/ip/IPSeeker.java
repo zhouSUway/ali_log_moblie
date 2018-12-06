@@ -63,7 +63,6 @@ public class IPSeeker {
         } catch (FileNotFoundException e) {
             System.out.println("IP地址信息文件没有找到，IP显示功能将无法使用");
             ipFile = null;
-
         }
         // 如果打开文件成功，读取文件头信息
         if (ipFile != null) {

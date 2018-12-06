@@ -44,7 +44,12 @@ public class LogToHdfsRunner implements Tool{
         return this.conf;
     }
 
-
+    /**
+     * yarn jar /home/gp1706.jar com.qianfeng.etl.mr.tohbase.ToLogRunner -d 2018-07-26
+     * @param args   /logs/07/26
+     * @return
+     * @throws Exception
+     */
     @Override
     public int run(String[] args) throws Exception {
         Configuration conf = this.getConf();

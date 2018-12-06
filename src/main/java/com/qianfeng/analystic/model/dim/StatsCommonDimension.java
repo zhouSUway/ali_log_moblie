@@ -1,9 +1,6 @@
 package com.qianfeng.analystic.model.dim;
 
-import com.qianfeng.analystic.model.dim.base.BaseDimension;
-import com.qianfeng.analystic.model.dim.base.DateDimension;
-import com.qianfeng.analystic.model.dim.base.KpiDimension;
-import com.qianfeng.analystic.model.dim.base.PlatformDimension;
+import com.qianfeng.analystic.model.dim.base.*;
 
 import java.io.DataInput;
 import java.io.DataOutput;

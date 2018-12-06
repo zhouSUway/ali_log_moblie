@@ -16,19 +16,19 @@ import org.apache.log4j.Logger;
  */
 public class IpParserUtil extends IPSeeker{
     private static final Logger logger = Logger.getLogger(IpParserUtil.class);
-    static RegionInfo info = new RegionInfo();
+    RegionInfo info = new RegionInfo();
     /**
      * @param ip
      * @return 返回地域信息
      */
-    public static RegionInfo parserIp(String ip){
+    public RegionInfo parserIp(String ip){
         //判断ip是否为空
         if(StringUtils.isEmpty(ip) || StringUtils.isEmpty(ip.trim())){
             return info;
         }
         try {
             //ip不为空，正常解析
-            String country = IPSeeker.getInstance().getCountry(ip);
+            String country = super.getCountry(ip);
             if("局域网".equals(country)){
                 info.setCountry("中国");
                 info.setProvince("北京");
