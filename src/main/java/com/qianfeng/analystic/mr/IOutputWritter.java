@@ -28,4 +28,6 @@ public interface IOutputWritter {
      */
     void outputWrite(Configuration conf, BaseDimension key, OutputValueBaseWritable value,
                      PreparedStatement ps, IDimensionConvert convert) throws IOException,SQLException;
+
+
 }

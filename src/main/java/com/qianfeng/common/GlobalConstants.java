@@ -13,7 +13,7 @@ public class GlobalConstants {
 
     public static final String ALL_OF_VALUE = "all";
 
-    public static final String URL = "jdbc:mysql://hadoop01:3306/result";
+    public static final String URL = "jdbc:mysql://bigdata1:3306/result";
 
     public static final String DRIVER = "com.mysql.jdbc.Driver";
 

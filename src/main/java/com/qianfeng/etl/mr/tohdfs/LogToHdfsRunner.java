@@ -29,7 +29,7 @@ public class LogToHdfsRunner implements Tool{
         try {
             ToolRunner.run(new Configuration(),new LogToHdfsRunner(),args);
         } catch (Exception e) {
-            logger.warn("运行etl to hdfs 异常",e);
+            logger.warn("运行异常",e);
         }
     }
 

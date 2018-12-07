@@ -61,7 +61,7 @@ import java.util.Map;
  */
 public class NewUserRunner implements Tool{
     private static final Logger logger = Logger.getLogger(NewUserRunner.class);
-    private Configuration conf = new Configuration();
+    private Configuration conf = null;
 
     public static void main(String[] args) {
         try {

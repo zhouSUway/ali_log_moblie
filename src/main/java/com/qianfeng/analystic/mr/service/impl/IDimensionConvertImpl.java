@@ -225,6 +225,7 @@ public class IDimensionConvertImpl implements IDimensionConvert{
             int i = 0;
             if(dimension instanceof DateDimension){
                 DateDimension date = (DateDimension) dimension;
+
                 ps.setInt(++i,date.getYear());
                 ps.setInt(++i,date.getSeason());
                 ps.setInt(++i,date.getMonth());
@@ -232,6 +233,7 @@ public class IDimensionConvertImpl implements IDimensionConvert{
                 ps.setInt(++i,date.getDay());
                 ps.setDate(++i,new Date(date.getCalendar().getTime()));
                 ps.setString(++i,date.getType());
+
             } else if(dimension instanceof PlatformDimension){
                 PlatformDimension platform = (PlatformDimension) dimension;
                 ps.setString(++i,platform.getPlatformName());

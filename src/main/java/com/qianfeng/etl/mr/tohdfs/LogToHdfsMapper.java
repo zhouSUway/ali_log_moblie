@@ -17,7 +17,7 @@ import java.util.Map;
  * @Date: 2018/7/26 11:11
  * @Description:将解析后的数据存储到hdfs中的mapper类
  */
-public class LogToHdfsMapper extends Mapper<Object,Text,NullWritable,LogDataWritable> {
+public class LogToHdfsMapper extends Mapper<Object,Text,LogDataWritable,NullWritable> {
     private static final Logger logger = Logger.getLogger(LogToHdfsMapper.class);
     private byte[] family = Bytes.toBytes(EventLogsConstant.HBASE_COLUMN_FAMILY);
     //输入输出和过滤行记录
@@ -95,7 +95,7 @@ public class LogToHdfsMapper extends Mapper<Object,Text,NullWritable,LogDataWrit
                 ld.province  =info.get(EventLogsConstant.EVENT_COLUMN_NAME_PROVINCE);
                 ld.city  =info.get(EventLogsConstant.EVENT_COLUMN_NAME_CITY);
                 //输出
-                context.write(NullWritable.get(),ld);
+                context.write(ld,NullWritable.get());
                 this.outputRecords ++;
             }
         } catch (Exception e) {

@@ -1,4 +1,5 @@
 import com.qianfeng.analystic.model.dim.base.DateDimension;
+import com.qianfeng.analystic.model.dim.base.KpiDimension;
 import com.qianfeng.analystic.model.dim.base.PlatformDimension;
 import com.qianfeng.analystic.mr.service.IDimensionConvert;
 import com.qianfeng.analystic.mr.service.impl.IDimensionConvertImpl;
@@ -15,10 +16,15 @@ import java.sql.SQLException;
 public class DimensionTest {
     public static void main(String[] args) {
         IDimensionConvert convert = new IDimensionConvertImpl();
-//        PlatformDimension pl = new PlatformDimension("www");
+        PlatformDimension pl = new PlatformDimension("www");
+        KpiDimension kd = new KpiDimension("bigdata");
         DateDimension dateDimension = DateDimension.buildDate(1532593870123l, DateEnum.DAY);
         try {
             System.out.println(convert.getDimensionIdByDimension(dateDimension));
+
+            System.out.println(convert.getDimensionIdByDimension(pl));
+
+            System.out.println(convert.getDimensionIdByDimension(kd));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {

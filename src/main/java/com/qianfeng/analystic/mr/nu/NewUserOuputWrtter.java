@@ -35,6 +35,9 @@ public class NewUserOuputWrtter implements IOutputWritter {
         if(v.getKpi().equals(KpiType.BROWSER_NEW_USER)){
             ps.setInt(++i,convert.getDimensionIdByDimension(statsUserDimension.getBrowserDimension()));
         }
+
+
+
         ps.setInt(++i,newUsers);
         ps.setString(++i,conf.get(GlobalConstants.RUNNING_DATE));
         ps.setInt(++i,newUsers);
